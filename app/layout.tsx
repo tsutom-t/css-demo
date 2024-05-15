@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
+import { MonsterProvider } from "./providers/monster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Monster", href: "/monster" },
 ];
 
 export default function RootLayout({
@@ -50,8 +52,7 @@ export default function RootLayout({
               ))}
             </ul>
           </header>
-
-          {children}
+          <MonsterProvider>{children}</MonsterProvider>
 
           <footer className="container static top-full h-16 flex justify-between items-center border-t">
             <p>&copy; TsutomuT</p>
