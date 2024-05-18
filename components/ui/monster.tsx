@@ -8,34 +8,33 @@ import { Button } from "./button";
 type MonsterProps =
   | {
       id: number;
+      hp?: undefined;
       mode: "select";
       onSelected: (id: number) => void;
       onAttack?: undefined;
-      onInit: undefined;
     }
   | {
       id: number;
+      hp: number;
       mode: "battle";
       onAttack: () => void;
       onSelected?: undefined;
-      onInit: (setHp: Dispatch<SetStateAction<number>>) => void;
     }
   | {
       id: number;
+      hp?: undefined;
       mode: "none";
       onAttack?: undefined;
       onSelected?: undefined;
-      onInit: undefined;
     };
 
 export default function Monster({
   id,
   mode,
-  onInit,
+  hp,
   onSelected,
   onAttack,
 }: MonsterProps) {
-  const [hp, setHp] = useState(100);
   var sound = useMemo(() => {
     return new Howl({
       src: ["sounds/attack.mp3"],
@@ -46,11 +45,6 @@ export default function Monster({
   const monster = useMemo(() => {
     return monsters.find((monster) => monster.id === id);
   }, [id]);
-
-  useEffect(() => {
-    onInit?.(setHp);
-    console.log("初期化完了");
-  }, [setHp, onInit]);
 
   if (!monster) {
     return null;
