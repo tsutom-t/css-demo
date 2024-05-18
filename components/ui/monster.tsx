@@ -99,9 +99,7 @@ export default function Monster({
 
       <div>
         {mode === "select" && (
-          <Button onClick={() => onSelected(monster.id)} disabled={hp <= 0}>
-            選ぶ
-          </Button>
+          <Button onClick={() => onSelected(monster.id)}>選ぶ</Button>
         )}
       </div>
     </div>
