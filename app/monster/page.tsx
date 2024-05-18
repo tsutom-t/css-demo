@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import Monster from "@/components/ui/monster";
-import { MonsterCount, monsters } from "@/lib/monster";
+import { monsters } from "@/lib/monster";
 import Link from "next/link";
-import { MonsterProvider, useMonster } from "../providers/monster";
+import { useMonster } from "../providers/monster";
 
 export default function Page() {
   const { myMonsterId, setMyMonsterId } = useMonster();
